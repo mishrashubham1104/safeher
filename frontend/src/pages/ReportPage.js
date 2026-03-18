@@ -46,14 +46,13 @@ const ReportPage = () => {
     policeReportNumber: '',
     tags:          '',
   });
-  const [images, setImages]     = useState([]);   // base64 strings
+  const [images, setImages]     = useState([]);   
   const [previews, setPreviews] = useState([]);
   const [submitting, setSubmitting] = useState(false);
   const fileRef = useRef(null);
 
   const handle = (field, val) => setForm((f) => ({ ...f, [field]: val }));
 
-  // Convert selected files → base64, store both for payload and preview
   const handleImages = async (e) => {
     const files = Array.from(e.target.files).slice(0, 3);
     const base64Array = await Promise.all(files.map(toBase64));
