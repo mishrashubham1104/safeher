@@ -24,6 +24,15 @@ const SEVERITIES = [
   { value: 'low',      label: '🟢 Low',      color: '#00897B', bg: '#E0F2F1' },
 ];
 
+// Helper: convert a File to a base64 string
+const toBase64 = (file) =>
+  new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload  = () => resolve(reader.result); // "data:image/png;base64,..."
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+
 const ReportPage = () => {
   const navigate = useNavigate();
   const { coords, address, loading: locLoading, error: locError, getLocation } = useGeolocation();
@@ -37,16 +46,18 @@ const ReportPage = () => {
     policeReportNumber: '',
     tags:          '',
   });
-  const [images, setImages]     = useState([]);
+  const [images, setImages]     = useState([]);   // base64 strings
   const [previews, setPreviews] = useState([]);
   const [submitting, setSubmitting] = useState(false);
   const fileRef = useRef(null);
 
   const handle = (field, val) => setForm((f) => ({ ...f, [field]: val }));
 
-  const handleImages = (e) => {
+  // Convert selected files → base64, store both for payload and preview
+  const handleImages = async (e) => {
     const files = Array.from(e.target.files).slice(0, 3);
-    setImages(files);
+    const base64Array = await Promise.all(files.map(toBase64));
+    setImages(base64Array);                                      // ✅ used in payload
     setPreviews(files.map((f) => URL.createObjectURL(f)));
   };
 
@@ -77,7 +88,6 @@ const ReportPage = () => {
 
     setSubmitting(true);
     try {
-      // Send as JSON (not FormData) for clean parsing on backend
       const payload = {
         type:               form.type,
         severity:           form.severity,
@@ -89,6 +99,7 @@ const ReportPage = () => {
         policeReported:     form.policeReported,
         policeReportNumber: form.policeReportNumber || '',
         tags:               form.tags || '',
+        images,             // ✅ base64 strings array included in JSON payload
       };
 
       await createIncident(payload);
