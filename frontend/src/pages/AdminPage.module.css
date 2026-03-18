@@ -1,0 +1,239 @@
+.page {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #0F0509;
+}
+
+.adminHeader {
+  background: linear-gradient(135deg, #0F0509, #3D0018);
+  flex-shrink: 0;
+}
+
+.tabBar {
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  padding: 0 0.5rem;
+}
+.tabBar::-webkit-scrollbar { display: none; }
+
+.tabBtn {
+  padding: 0.65rem 1rem;
+  background: none; border: none;
+  color: rgba(255,255,255,0.5);
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.8rem; font-weight: 700;
+  cursor: pointer; white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+}
+.tabActive { color: #FF4081; border-bottom-color: #FF4081; }
+
+.scroll {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Overview */
+.overviewContent { padding: 1rem; }
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.65rem;
+  margin-bottom: 1.25rem;
+}
+
+.statCard {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-top: 3px solid var(--primary);
+  border-radius: 12px;
+  padding: 0.85rem;
+}
+
+.statNum   { font-size: 1.8rem; font-weight: 900; color: #fff; }
+.statLabel { font-size: 0.68rem; color: rgba(255,255,255,0.5); margin-top: 2px; }
+.statTrend { font-size: 0.65rem; color: #69F0AE; margin-top: 4px; }
+
+/* Chart */
+.chartSection {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  padding: 1rem;
+}
+.chartTitle {
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: rgba(255,255,255,0.6);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+}
+
+.barRow {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.65rem;
+}
+.barLabel { font-size: 0.72rem; color: rgba(255,255,255,0.6); width: 95px; flex-shrink: 0; }
+.barTrack { flex: 1; height: 8px; background: rgba(255,255,255,0.08); border-radius: 4px; overflow: hidden; }
+.barFill  { height: 100%; background: linear-gradient(90deg, #C2185B, #FF4081); border-radius: 4px; transition: width 0.5s ease; }
+.barCount { font-size: 0.72rem; color: rgba(255,255,255,0.5); width: 24px; text-align: right; flex-shrink: 0; }
+
+/* Tab Content */
+.tabContent { padding: 0.75rem 1rem; }
+
+.filterRow {
+  display: flex;
+  gap: 0.4rem;
+  margin-bottom: 0.85rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-bottom: 4px;
+}
+.filterRow::-webkit-scrollbar { display: none; }
+
+.fChip {
+  padding: 0.3rem 0.85rem;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.05);
+  color: rgba(255,255,255,0.5);
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.7rem; font-weight: 700;
+  cursor: pointer; white-space: nowrap;
+}
+.fChipActive { background: var(--primary); border-color: var(--primary); color: #fff; }
+
+/* Admin Card */
+.adminCard {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 0.85rem;
+  margin-bottom: 0.65rem;
+}
+.sosActive { border-color: rgba(229,57,53,0.4); background: rgba(229,57,53,0.06); }
+
+.adminCardTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+}
+
+.incType { font-size: 0.88rem; font-weight: 800; color: #fff; display: block; }
+.incMeta { font-size: 0.7rem; color: rgba(255,255,255,0.4); display: block; margin-top: 2px; }
+.incDesc { font-size: 0.78rem; color: rgba(255,255,255,0.6); margin-bottom: 0.6rem; line-height: 1.4; }
+
+.sevPill {
+  font-size: 0.62rem; font-weight: 800;
+  padding: 3px 10px; border-radius: 20px;
+  flex-shrink: 0;
+}
+.sev_high     { background: rgba(229,57,53,0.2);  color: #EF9A9A; }
+.sev_critical { background: rgba(183,28,28,0.25); color: #FFCDD2; }
+.sev_medium   { background: rgba(245,127,23,0.2); color: #FFCC80; }
+.sev_low      { background: rgba(0,137,123,0.2);  color: #80CBC4; }
+
+.modActions { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+.verifyBtn, .rejectBtn, .investigateBtn {
+  flex: 1;
+  padding: 0.45rem 0.5rem;
+  border-radius: 8px;
+  border: none;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.72rem; font-weight: 800;
+  cursor: pointer;
+  min-width: 70px;
+}
+.verifyBtn      { background: rgba(0,137,123,0.2); color: #4DB6AC; }
+.investigateBtn { background: rgba(245,127,23,0.2); color: #FFB74D; }
+.rejectBtn      { background: rgba(229,57,53,0.15); color: #EF9A9A; }
+
+.resolvedNote { font-size: 0.72rem; color: rgba(255,255,255,0.4); }
+.resolvedNote strong { color: #4DB6AC; }
+
+/* Users */
+.userRow { display: flex; align-items: center; gap: 0.75rem; }
+.userAvatar {
+  width: 40px; height: 40px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 1rem; font-weight: 800;
+  flex-shrink: 0;
+}
+.userInfo { flex: 1; min-width: 0; }
+.userInfo strong { font-size: 0.85rem; color: #fff; display: block; }
+.userInfo span { font-size: 0.68rem; color: rgba(255,255,255,0.4); display: block; }
+.userRight { display: flex; flex-direction: column; align-items: flex-end; gap: 0.4rem; }
+
+.roleBadge {
+  font-size: 0.6rem; font-weight: 800;
+  padding: 2px 8px; border-radius: 20px;
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.5);
+}
+.roleAdmin { background: rgba(194,24,91,0.25); color: #F48FB1; }
+
+.toggleUserBtn {
+  font-size: 0.62rem; font-weight: 800;
+  padding: 3px 10px; border-radius: 20px;
+  border: none; cursor: pointer;
+  background: rgba(0,137,123,0.2); color: #4DB6AC;
+}
+.toggleUserBtnInactive { background: rgba(229,57,53,0.15); color: #EF9A9A; }
+
+/* SOS */
+.sosRow { display: flex; align-items: flex-start; gap: 0.75rem; }
+.sosIcon { font-size: 1.5rem; flex-shrink: 0; }
+.sosBadge { font-size: 0.6rem; font-weight: 800; padding: 3px 10px; border-radius: 20px; flex-shrink: 0; }
+.sosBadgeActive   { background: rgba(229,57,53,0.2); color: #EF9A9A; animation: blinkBg 1s infinite; }
+.sosBadgeResolved { background: rgba(0,137,123,0.2); color: #4DB6AC; }
+@keyframes blinkBg { 0%,100%{opacity:1} 50%{opacity:0.5} }
+
+.loadingText { color: rgba(255,255,255,0.4); font-size:0.85rem; padding:1rem; text-align:center; }
+.emptyText   { color: rgba(255,255,255,0.3); font-size:0.85rem; padding:1rem; text-align:center; }
+
+/* ── Volunteers Tab ──────────────────────────────────────── */
+.emptyBox {
+  text-align: center; padding: 2.5rem 1rem; color: rgba(255,255,255,0.4);
+}
+.emptyBox span  { font-size: 2.5rem; display: block; margin-bottom: 0.75rem; }
+.emptyBox p     { font-size: 0.88rem; font-weight: 700; margin-bottom: 0.25rem; }
+.emptyBox small { font-size: 0.72rem; }
+
+.volRow {
+  display: flex; gap: 0.75rem; align-items: flex-start;
+  margin-bottom: 0.75rem;
+}
+.volAvatar {
+  width: 42px; height: 42px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; font-weight: 800; color: #fff; flex-shrink: 0;
+}
+.volInfo {
+  flex: 1; min-width: 0;
+  display: flex; flex-direction: column; gap: 2px;
+}
+.volInfo strong { font-size: 0.88rem; color: #fff; font-weight: 800; }
+.volInfo span   { font-size: 0.72rem; color: rgba(255,255,255,0.55); }
+.volSkills      { font-size: 0.68rem !important; color: rgba(255,255,255,0.4) !important; }
+.volAvailability { font-size: 0.68rem !important; color: rgba(255,255,255,0.35) !important; }
+
+.volRight {
+  display: flex; flex-direction: column; align-items: flex-end; gap: 0.3rem;
+}
+.volStatusBadge {
+  font-size: 0.62rem; font-weight: 800;
+  padding: 0.2rem 0.6rem; border-radius: 20px;
+  text-transform: capitalize; white-space: nowrap;
+}
+.volOnline      { font-size: 0.65rem; font-weight: 700; color: rgba(255,255,255,0.4); }
+.volOnlineActive { color: #4DB6AC; }

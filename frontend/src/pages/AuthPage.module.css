@@ -1,0 +1,129 @@
+/* ── Full page wrapper — gradient bg fills screen ── */
+.authScreen {
+  min-height: 100vh;
+  background: linear-gradient(160deg, #880E4F 0%, #C2185B 40%, #FF4081 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  overflow-y: auto;
+}
+
+/* ── Centered container — max 460px, centered on desktop ── */
+.authContainer {
+  width: 100%;
+  max-width: 460px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero {
+  padding: 0 1.5rem 1.5rem;
+  text-align: center;
+  color: #fff;
+  width: 100%;
+}
+
+.shieldWrap {
+  width: 80px; height: 80px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 1rem;
+  border: 2px solid rgba(255,255,255,0.3);
+  animation: float 3s ease-in-out infinite;
+}
+.shieldIcon { font-size: 36px; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+
+.appTitle {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.5px;
+  margin-bottom: 0.25rem;
+}
+
+.appTagline {
+  color: rgba(255,255,255,0.8);
+  font-size: 0.85rem;
+  margin-bottom: 1.25rem;
+}
+
+.statsRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.stat { text-align: center; }
+.stat strong { display: block; font-size: 1rem; font-weight: 900; color: #fff; }
+.stat span   { font-size: 0.7rem; color: rgba(255,255,255,0.7); }
+.statDiv { width: 1px; height: 24px; background: rgba(255,255,255,0.3); }
+
+/* ── Card ── */
+.card {
+  background: #fff;
+  border-radius: 24px;
+  padding: 2rem 2rem 1.75rem;
+  width: 100%;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.25);
+}
+
+.tabs {
+  display: flex;
+  background: #FFF0F5;
+  border-radius: 12px;
+  padding: 4px;
+  margin-bottom: 1.5rem;
+}
+.tab {
+  flex: 1;
+  padding: 0.6rem;
+  border: none;
+  background: transparent;
+  border-radius: 9px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #C2185B;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.tabActive { background: #C2185B; color: #fff; }
+
+.fineprint {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.68rem;
+  color: #bbb;
+  line-height: 1.5;
+}
+
+/* ── Mobile: make it feel native ── */
+@media (max-width: 500px) {
+  .authScreen {
+    align-items: flex-start;
+    padding: 0;
+  }
+  .authContainer {
+    max-width: 100%;
+    min-height: 100vh;
+    justify-content: flex-start;
+  }
+  .hero {
+    padding: 3rem 1.5rem 1.5rem;
+    background: transparent;
+  }
+  .card {
+    border-radius: 24px 24px 0 0;
+    flex: 1;
+    min-height: 60vh;
+  }
+}

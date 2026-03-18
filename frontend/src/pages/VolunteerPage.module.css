@@ -1,0 +1,151 @@
+.page  { height: 100%; display: flex; flex-direction: column; background: var(--bg); overflow: hidden; }
+.scroll { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 1rem 1rem 2rem; }
+
+/* Center layout for loading/pending */
+.center {
+  flex: 1; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 2rem 1.5rem; text-align: center;
+}
+
+/* Loading spinner */
+.loadingSpinner {
+  width: 40px; height: 40px; border-radius: 50%;
+  border: 3px solid var(--border);
+  border-top-color: var(--primary);
+  animation: spin 0.8s linear infinite;
+  margin-bottom: 1rem;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Register hero */
+.registerHero {
+  text-align: center; padding: 1.5rem 1rem;
+  background: linear-gradient(135deg, var(--primary-soft), var(--bg));
+  border-radius: 16px; margin-bottom: 1.5rem;
+  border: 1.5px solid var(--border);
+}
+.heroEmoji  { font-size: 3rem; display: block; margin-bottom: 0.75rem; }
+.registerHero h2 { font-size: 1.2rem; font-weight: 800; color: var(--text); margin-bottom: 0.5rem; }
+.registerHero p  { font-size: 0.84rem; color: var(--text-muted); line-height: 1.6; }
+
+/* Form */
+.form      { display: flex; flex-direction: column; gap: 1.25rem; }
+.formGroup { margin-bottom: 0.25rem; }
+.formLabel { display: block; font-size: 0.78rem; font-weight: 800; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.35rem; }
+.formHint  { font-size: 0.72rem; color: var(--text-muted); margin-bottom: 0.5rem; }
+
+/* Skills grid */
+.skillsGrid { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.skillBtn {
+  padding: 0.4rem 0.85rem; border-radius: 20px;
+  border: 1.5px solid var(--border); background: var(--surface);
+  font-family: 'Nunito', sans-serif; font-size: 0.78rem; font-weight: 700;
+  color: var(--text-muted); cursor: pointer; transition: all 0.15s;
+}
+.skillSelected { background: var(--primary); border-color: var(--primary); color: #fff; }
+
+/* Availability */
+.availGrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; }
+.availBtn  {
+  padding: 0.6rem; border-radius: 12px;
+  border: 1.5px solid var(--border); background: var(--surface);
+  font-family: 'Nunito', sans-serif; font-size: 0.78rem; font-weight: 700;
+  color: var(--text-muted); cursor: pointer; transition: all 0.15s;
+}
+.availSelected { background: var(--primary); border-color: var(--primary); color: #fff; }
+
+/* Info box */
+.infoBox {
+  background: var(--surface-2); border-radius: 12px;
+  padding: 1rem; border: 1.5px solid var(--border);
+  display: flex; flex-direction: column; gap: 0.4rem;
+}
+.infoBox p { font-size: 0.78rem; color: var(--text-muted); }
+
+/* Pending screen */
+.pendingTitle { font-size: 1.2rem; font-weight: 800; color: var(--text); margin: 1rem 0 0.5rem; }
+.pendingSub   { font-size: 0.84rem; color: var(--text-muted); line-height: 1.6; max-width: 280px; }
+.pendingSteps { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.75rem; width: 100%; max-width: 280px; }
+.pendingStep  { display: flex; align-items: center; gap: 0.75rem; font-size: 0.85rem; color: var(--text); }
+.stepDot      { width: 28px; height: 28px; border-radius: 50%; background: var(--border); display: flex; align-items: center; justify-content: center; font-size: 0.72rem; font-weight: 800; color: var(--text-muted); flex-shrink: 0; }
+.stepDone     { background: var(--safe); color: #fff; }
+.stepActive   { background: var(--primary); color: #fff; animation: pulseDot 1.5s infinite; }
+@keyframes pulseDot { 0%,100%{box-shadow:0 0 0 0 rgba(194,24,91,0.4)} 50%{box-shadow:0 0 0 8px rgba(194,24,91,0)} }
+
+/* Dashboard - Status card */
+.statusCard {
+  display: flex; align-items: center; justify-content: space-between;
+  background: var(--surface); border-radius: 16px; padding: 1rem 1.1rem;
+  border: 1.5px solid var(--border); box-shadow: var(--shadow-sm);
+  margin-bottom: 1rem;
+}
+.statusLeft   { display: flex; align-items: center; gap: 0.75rem; }
+.statusLeft strong { font-size: 0.9rem; font-weight: 800; color: var(--text); display: block; }
+.statusLeft span   { font-size: 0.72rem; color: var(--text-muted); }
+.statusDot    { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+.dotOnline    { background: var(--safe); box-shadow: 0 0 0 4px rgba(0,137,123,0.2); animation: pulseGreen 2s infinite; }
+.dotOffline   { background: var(--text-muted); }
+@keyframes pulseGreen { 0%,100%{box-shadow:0 0 0 4px rgba(0,137,123,0.2)} 50%{box-shadow:0 0 0 8px rgba(0,137,123,0.05)} }
+
+.toggle       { width: 48px; height: 28px; border-radius: 14px; background: var(--border-strong); position: relative; cursor: pointer; transition: background 0.2s; flex-shrink: 0; }
+.toggleOn     { background: var(--safe); }
+.toggleKnob   { width: 22px; height: 22px; border-radius: 50%; background: #fff; position: absolute; top: 3px; left: 3px; transition: left 0.2s; box-shadow: 0 1px 4px rgba(0,0,0,0.2); }
+.toggleOn .toggleKnob { left: 23px; }
+
+/* Stats row */
+.statsRow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; margin-bottom: 1rem; }
+.statBox  {
+  background: var(--surface); border-radius: 14px; padding: 0.85rem 0.5rem;
+  text-align: center; border: 1.5px solid var(--border);
+}
+.statBox strong { font-size: 1.3rem; font-weight: 900; color: var(--primary); display: block; }
+.statBox span   { font-size: 0.65rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; }
+
+/* Active alert card */
+.activeAlertCard {
+  background: #FFF0F0; border: 2px solid #E53935;
+  border-radius: 16px; padding: 1.1rem; margin-bottom: 1rem;
+  animation: alertPulse 2s ease-in-out infinite;
+}
+@keyframes alertPulse { 0%,100%{border-color:#E53935} 50%{border-color:#FF7043} }
+.activeAlertHeader { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem; }
+.activeAlertBadge  { background: #E53935; color: #fff; font-size: 0.65rem; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: 20px; }
+.activeAlertTime   { font-size: 0.68rem; color: #E53935; }
+.activeAlertName   { font-size: 1rem; font-weight: 800; color: #1A0A0F; margin-bottom: 0.3rem; }
+.activeAlertAddr   { font-size: 0.8rem; color: #6B3A4A; margin-bottom: 0.2rem; }
+.activeAlertPhone  { font-size: 0.8rem; color: #6B3A4A; margin-bottom: 0.75rem; }
+.directionsBtn {
+  display: block; padding: 0.65rem; background: #1565C0; color: #fff;
+  text-decoration: none; text-align: center; border-radius: 10px;
+  font-size: 0.82rem; font-weight: 700; margin-bottom: 0.65rem;
+}
+.activeActions { display: flex; gap: 0.5rem; }
+.arrivedBtn    { flex: 1; padding: 0.7rem; background: #F57F17; border: none; border-radius: 10px; color: #fff; font-family: 'Nunito', sans-serif; font-size: 0.82rem; font-weight: 800; cursor: pointer; }
+.resolveBtn    { flex: 1; padding: 0.7rem; background: var(--safe); border: none; border-radius: 10px; color: #fff; font-family: 'Nunito', sans-serif; font-size: 0.82rem; font-weight: 800; cursor: pointer; }
+
+/* Alerts section */
+.alertsSection {margin-top: 0.25rem; }
+.alertsHeader  { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem; }
+.refreshBtn    { background: var(--surface-2); border: 1.5px solid var(--border); border-radius: 8px; padding: 0.3rem 0.6rem; font-size: 0.9rem; cursor: pointer; }
+.loadingRow    { text-align: center; padding: 1.5rem; font-size: 0.85rem; color: var(--text-muted); }
+.emptyAlerts   { text-align: center; padding: 2rem 1rem; }
+.emptyAlerts span  { font-size: 2.5rem; display: block; margin-bottom: 0.75rem; }
+.emptyAlerts p     { font-size: 0.9rem; font-weight: 700; color: var(--text); }
+.emptyAlerts small { font-size: 0.75rem; color: var(--text-muted); }
+
+/* Alert card */
+.alertCard         { background: var(--surface); border: 1.5px solid var(--border); border-radius: 16px; padding: 1rem; margin-bottom: 0.75rem; }
+.alertCardActive   { border-color: var(--sos-red); }
+.alertCardTop      { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.75rem; }
+.alertName         { font-size: 0.9rem; font-weight: 800; color: var(--text); display: block; margin-bottom: 0.2rem; }
+.alertAddr         { font-size: 0.75rem; color: var(--text-muted); display: block; margin-bottom: 0.2rem; }
+.alertTime         { font-size: 0.68rem; color: var(--text-muted); }
+.alertStatusBadge  { font-size: 0.62rem; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: 20px; white-space: nowrap; }
+.badgeActive       { background: #FFEBEE; color: var(--sos-red); }
+.badgeResponding   { background: var(--safe-soft); color: var(--safe); }
+.alertActions      { display: flex; gap: 0.5rem; }
+.acceptBtn         { flex: 1.5; padding: 0.65rem; background: var(--safe); border: none; border-radius: 10px; color: #fff; font-family: 'Nunito', sans-serif; font-size: 0.78rem; font-weight: 800; cursor: pointer; }
+.declineBtn        { flex: 1; padding: 0.65rem; background: var(--surface-2); border: 1.5px solid var(--border); border-radius: 10px; color: var(--text-muted); font-family: 'Nunito', sans-serif; font-size: 0.78rem; font-weight: 700; cursor: pointer; }
+.callAlertBtn      { flex: 1; padding: 0.65rem; background: #1565C0; border: none; border-radius: 10px; color: #fff; font-family: 'Nunito', sans-serif; font-size: 0.78rem; font-weight: 800; cursor: pointer; text-align: center; text-decoration: none; display: flex; align-items: center; justify-content: center; }
+.respondingNote    { font-size: 0.75rem; color: var(--safe); font-weight: 700; margin-top: 0.3rem; }

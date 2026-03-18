@@ -1,0 +1,50 @@
+.page { height: 100%; display: flex; flex-direction: column; overflow: hidden; }
+.scroll { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 1rem; }
+
+.loading { text-align: center; padding: 2rem; color: var(--text-muted); font-size: 0.9rem; }
+
+.empty {
+  text-align: center; padding: 3rem 1rem; color: var(--text-muted);
+}
+.empty span  { font-size: 3rem; display: block; margin-bottom: 0.75rem; }
+.empty p     { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.3rem; }
+.empty small { font-size: 0.75rem; }
+
+.list { display: flex; flex-direction: column; gap: 0.75rem; }
+
+.card {
+  background: #fff;
+  border-radius: var(--r);
+  border: 1.5px solid var(--border);
+  padding: 1rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.cardTop {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.icon { font-size: 1.5rem; flex-shrink: 0; }
+
+.info { flex: 1; min-width: 0; }
+.info strong { font-size: 0.9rem; color: var(--text); display: block; font-weight: 800; }
+.info span   { font-size: 0.72rem; color: var(--text-muted); display: block; margin-top: 2px; }
+
+.badge {
+  font-size: 0.65rem; font-weight: 800;
+  padding: 3px 10px; border-radius: 20px;
+  flex-shrink: 0; white-space: nowrap;
+}
+
+.cardMeta {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border);
+  padding-top: 0.5rem;
+  margin-top: 0.5rem;
+}

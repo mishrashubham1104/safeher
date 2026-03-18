@@ -1,0 +1,237 @@
+/* ── Global Reset ───────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ═══════════════════════════════════════════════════
+   LIGHT MODE
+═══════════════════════════════════════════════════ */
+:root {
+  --primary:          #C2185B;
+  --primary-dark:     #880E4F;
+  --primary-light:    #F8BBD0;
+  --primary-soft:     #FFF0F5;
+  --accent:           #FF4081;
+  --safe:             #00897B;
+  --safe-soft:        #E0F2F1;
+  --warning:          #F57F17;
+  --danger:           #D32F2F;
+  --sos-red:          #E53935;
+  --bg:               #FFF8F9;
+  --surface:          #FFFFFF;
+  --surface-2:        #FFFAFC;
+  --surface-hover:    #FFF0F5;
+  --text:             #1A0A0F;
+  --text-muted:       #6B3A4A;
+  --text-inverse:     #FFFFFF;
+  --border:           #F0D0DA;
+  --border-strong:    #E0A0B8;
+  --shadow-sm:        0 2px 8px rgba(194,24,91,0.08);
+  --shadow-md:        0 4px 20px rgba(194,24,91,0.15);
+  --shadow-lg:        0 8px 40px rgba(194,24,91,0.2);
+  --skeleton-from:    #f0d0da;
+  --skeleton-via:     #fff8f9;
+  --r:                16px;
+  --r-sm:             10px;
+  --nav-height:       65px;
+  --header-height:    60px;
+}
+
+/* ═══════════════════════════════════════════════════
+   DARK MODE
+═══════════════════════════════════════════════════ */
+[data-theme='dark'] {
+  --primary:          #F06292;
+  --primary-dark:     #C2185B;
+  --primary-light:    #4A1A2A;
+  --primary-soft:     #2A0F1A;
+  --accent:           #FF80AB;
+  --safe:             #4DB6AC;
+  --safe-soft:        #0D2926;
+  --warning:          #FFB74D;
+  --danger:           #EF5350;
+  --sos-red:          #EF5350;
+  --bg:               #121212;
+  --surface:          #1E1E1E;
+  --surface-2:        #252525;
+  --surface-hover:    #2A2A2A;
+  --text:             #F5F5F5;
+  --text-muted:       #BDBDBD;
+  --text-inverse:     #121212;
+  --border:           #333333;
+  --border-strong:    #444444;
+  --shadow-sm:        0 2px 8px rgba(0,0,0,0.35);
+  --shadow-md:        0 4px 20px rgba(0,0,0,0.45);
+  --shadow-lg:        0 8px 40px rgba(0,0,0,0.55);
+  --skeleton-from:    #2a2a2a;
+  --skeleton-via:     #1e1e1e;
+}
+
+html, body { height: 100%; }
+#root      { height: 100%; }
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.app-shell {
+  max-width: 430px;
+  margin: 0 auto;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  background: var(--bg);
+}
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--primary-light); border-radius: 4px; }
+
+.page-scroll {
+  height: calc(100vh - var(--header-height) - var(--nav-height));
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.full-page-scroll {
+  height: calc(100vh - var(--nav-height));
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: var(--text-inverse);
+  border: none;
+  border-radius: 14px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  box-shadow: var(--shadow-md);
+  letter-spacing: 0.3px;
+}
+.btn-primary:active   { transform: scale(0.97); }
+.btn-primary:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+.btn-outline {
+  flex: 1;
+  padding: 0.85rem;
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  border-radius: 12px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  color: var(--text);
+  transition: background 0.15s;
+}
+.btn-outline:hover { background: var(--surface-hover); }
+
+.btn-danger {
+  flex: 1;
+  padding: 0.85rem;
+  background: linear-gradient(135deg, var(--sos-red), #B71C1C);
+  border: none;
+  border-radius: 12px;
+  color: var(--text-inverse);
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+.btn-danger:active { transform: scale(0.97); }
+
+.form-group { margin-bottom: 1rem; }
+.form-label {
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.4rem;
+  display: block;
+}
+.form-input {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 1rem;
+  color: var(--text);
+  background: var(--surface-2);
+  outline: none;
+  transition: border 0.2s, background 0.2s;
+}
+.form-input:focus   { border-color: var(--primary); }
+textarea.form-input { min-height: 90px; resize: none; }
+select.form-input   { appearance: none; cursor: pointer; }
+
+.section-title {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 0 1rem;
+  margin-bottom: 0.6rem;
+}
+
+.card {
+  background: var(--surface);
+  border-radius: var(--r);
+  border: 1.5px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+
+@keyframes shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position:  400px 0; }
+}
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--skeleton-from) 25%,
+    var(--skeleton-via)  50%,
+    var(--skeleton-from) 75%
+  );
+  background-size: 800px 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 8px;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-in-up { animation: fadeInUp 0.3s ease forwards; }
+
+@keyframes pulse-danger {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(229,57,53,0.3); }
+  50%       { box-shadow: 0 0 0 12px rgba(229,57,53,0.08); }
+}
+
+.Toastify__toast {
+  font-family: 'Nunito', sans-serif !important;
+  font-weight: 700 !important;
+  border-radius: 14px !important;
+  max-width: 360px;
+  background: var(--surface) !important;
+  color: var(--text) !important;
+}
+
+.mapboxgl-ctrl-logo   { display: none !important; }
+.mapboxgl-ctrl-attrib { display: none !important; }

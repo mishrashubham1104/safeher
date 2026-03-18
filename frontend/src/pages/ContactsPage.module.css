@@ -1,0 +1,298 @@
+.page {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.heroHeader {
+  background: linear-gradient(135deg, #880E4F, #C2185B);
+  flex-shrink: 0;
+}
+
+.heroBody {
+  padding: 0.75rem 1.25rem 1rem;
+}
+
+.heroSub {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+}
+
+.heroStats {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.heroStat { text-align: center; }
+.heroStat strong { display: block; font-size: 1.1rem; font-weight: 900; color: var(--text-inverse); }
+.heroStat span   { font-size: 0.68rem; color: rgba(255,255,255,0.7); }
+.heroStatDiv     { width: 1px; height: 24px; background: rgba(255,255,255,0.3); }
+
+.scroll {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 1rem;
+}
+
+.section {
+  padding: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+.section:last-child { border-bottom: none; }
+
+.sectionHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.85rem;
+}
+
+.addBtn {
+  background: var(--primary);
+  color: var(--text-inverse); border: none;
+  border-radius: 20px;
+  padding: 0.35rem 1rem;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.78rem; font-weight: 800;
+  cursor: pointer;
+}
+
+/* Add Form */
+.addForm {
+  background: var(--bg);
+  border-radius: 14px;
+  padding: 1rem;
+  margin-bottom: 0.85rem;
+  border: 1.5px solid var(--border);
+}
+
+.notifyToggles {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+.ntLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+/* Contact Cards */
+.contactCard {
+  background: var(--surface);
+  border-radius: var(--r);
+  border: 1.5px solid var(--border);
+  padding: 0.85rem 1rem;
+  margin-bottom: 0.65rem;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.avatar {
+  width: 46px; height: 46px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; font-weight: 800;
+  color: var(--text-inverse); flex-shrink: 0;
+}
+
+.contactInfo { flex: 1; min-width: 0; }
+.contactInfo strong {
+  font-size: 0.88rem;
+  color: var(--text);
+  display: block;
+}
+.contactInfo span {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+}
+
+.notifyBadges {
+  display: flex;
+  gap: 0.3rem;
+  margin-top: 3px;
+}
+.badge {
+  font-size: 0.6rem;
+  font-weight: 800;
+  background: var(--primary-soft);
+  color: var(--primary);
+  padding: 1px 7px;
+  border-radius: 20px;
+}
+
+.contactActions {
+  display: flex;
+  gap: 0.4rem;
+}
+.actionBtn {
+  width: 34px; height: 34px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  border: none; cursor: pointer; font-size: 0.85rem;
+  transition: transform 0.1s;
+}
+.actionBtn:active { transform: scale(0.9); }
+.callBtn { background: var(--safe-soft); }
+.delBtn  { background: var(--primary-soft); }
+
+.skeletonCard {
+  height: 72px;
+  border-radius: var(--r);
+  margin-bottom: 0.65rem;
+}
+
+.empty {
+  text-align: center;
+  padding: 2rem 1rem;
+  color: var(--text-muted);
+}
+.empty span  { font-size: 2.5rem; display: block; margin-bottom: 0.75rem; }
+.empty p     { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.3rem; }
+.empty small { font-size: 0.75rem; display: block; margin-bottom: 1rem; }
+
+.addEmptyBtn {
+  background: var(--primary);
+  color: var(--text-inverse); border: none;
+  border-radius: 12px;
+  padding: 0.7rem 1.5rem;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.88rem; font-weight: 800;
+  cursor: pointer;
+}
+
+/* ── Call Confirmation Modal ─────────────────────────────── */
+.callOverlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: 600;
+  display: flex; align-items: flex-end;
+  animation: fadeInCall 0.2s ease;
+}
+@keyframes fadeInCall { from{opacity:0} to{opacity:1} }
+
+.callSheet {
+  background: var(--surface);
+  border-radius: 24px 24px 0 0;
+  padding: 1.5rem 1.5rem 2.5rem;
+  width: 100%;
+  text-align: center;
+  animation: slideUpCall 0.3s ease;
+}
+@keyframes slideUpCall { from{transform:translateY(100%)} to{transform:translateY(0)} }
+
+.callHandle {
+  width: 40px; height: 4px;
+  background: var(--border); border-radius: 2px;
+  margin: 0 auto 1.5rem;
+}
+
+.callIcon {
+  font-size: 3rem;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+.callName {
+  font-size: 1.2rem; font-weight: 800;
+  color: var(--text); margin-bottom: 0.3rem;
+}
+
+.callPhone {
+  font-size: 1.1rem; font-weight: 700;
+  color: var(--primary); margin-bottom: 0.4rem;
+  letter-spacing: 0.5px;
+}
+
+.callSub {
+  font-size: 0.82rem; color: var(--text-muted);
+  margin-bottom: 1.75rem;
+}
+
+.callActions {
+  display: flex; gap: 0.75rem;
+}
+
+.callCancelBtn {
+  flex: 1; padding: 0.9rem;
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  border-radius: 14px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.95rem; font-weight: 700;
+  color: var(--text); cursor: pointer;
+  transition: background 0.15s;
+}
+.callCancelBtn:hover { background: var(--surface-hover); }
+
+.callConfirmBtn {
+  flex: 1.5; padding: 0.9rem;
+  background: linear-gradient(135deg, var(--safe), #00695C);
+  border: none; border-radius: 14px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.95rem; font-weight: 800;
+  color: var(--text-inverse); cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0,137,123,0.4);
+  transition: transform 0.15s;
+}
+.callConfirmBtn:active { transform: scale(0.97); }
+
+/* ── Clickable SMS / Email badge buttons ─────────────────── */
+.badgeBtn {
+  font-size: 0.62rem;
+  font-weight: 800;
+  background: var(--primary-soft);
+  color: var(--primary);
+  padding: 3px 9px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  font-family: 'Nunito', sans-serif;
+  transition: background 0.15s, transform 0.1s, box-shadow 0.15s;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+.badgeBtn:hover {
+  background: var(--primary);
+  color: var(--text-inverse);
+  box-shadow: 0 2px 8px rgba(194,24,91,0.3);
+}
+.badgeBtn:active { transform: scale(0.93); }
+
+.badgeBtnEmail {
+  background: var(--safe-soft);
+  color: var(--safe);
+  border-color: var(--border);
+}
+.badgeBtnEmail:hover {
+  background: var(--safe);
+  color: var(--text-inverse);
+  box-shadow: 0 2px 8px rgba(0,137,123,0.3);
+}
+
+/* Live Share button in hero */
+.liveShareBtn {
+  width: calc(100% - 2rem);
+  margin: 0.75rem 1rem 0;
+  padding: 0.8rem;
+  background: linear-gradient(135deg, var(--primary), #880E4F);
+  border: none; border-radius: 14px; color: #fff;
+  font-family: 'Nunito', sans-serif; font-size: 0.88rem; font-weight: 800;
+  cursor: pointer; box-shadow: 0 4px 14px rgba(194,24,91,0.35);
+  transition: opacity 0.15s;
+  display: block;
+}
+.liveShareBtn:active { opacity: 0.85; }

@@ -1,0 +1,88 @@
+/* ProfilePage.module.css */
+.page { height: 100%; display: flex; flex-direction: column; overflow: hidden; }
+.scroll { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; padding-bottom: 2rem; }
+
+.profileHero {
+  background: linear-gradient(135deg, #880E4F, #C2185B);
+  padding: 2rem 1.5rem 1.5rem;
+  text-align: center;
+  color: var(--text-inverse);
+}
+.avatar {
+  width: 72px; height: 72px; border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  border: 3px solid rgba(255,255,255,0.4);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.8rem; font-weight: 900; color: var(--text-inverse);
+  margin: 0 auto 0.75rem;
+}
+.profileName  { font-size: 1.2rem; font-weight: 800; margin-bottom: 0.2rem; }
+.profileEmail { font-size: 0.78rem; opacity: 0.8; margin-bottom: 0.5rem; }
+.roleBadge {
+  font-size: 0.65rem; font-weight: 800;
+  background: rgba(255,255,255,0.2);
+  padding: 3px 12px; border-radius: 20px;
+}
+
+.tabs {
+  display: flex;
+  background: var(--primary-soft);
+  margin: 0.85rem 1rem 0;
+  border-radius: 12px;
+  padding: 4px;
+}
+.tab {
+  flex: 1; padding: 0.55rem;
+  border: none; background: transparent;
+  border-radius: 9px;
+  font-family: 'Nunito', sans-serif; font-size: 0.82rem; font-weight: 700;
+  color: var(--primary); cursor: pointer;
+}
+.tabActive { background: var(--primary); color: var(--text-inverse); }
+
+.tabContent { padding: 1rem; }
+
+.prefRow {
+  display: flex; align-items: center; gap: 0.75rem;
+  background: var(--surface); border-radius: 12px; padding: 0.85rem 1rem;
+  border: 1.5px solid var(--border); margin-bottom: 0.65rem; cursor: pointer;
+}
+.prefRow > div:first-child { flex: 1; }
+.prefRow strong { font-size: 0.85rem; display: block; color: var(--text); }
+.prefRow span   { font-size: 0.72rem; color: var(--text-muted); }
+.toggle {
+  width: 44px; height: 26px; border-radius: 13px;
+  background: var(--border-strong); position: relative; transition: background 0.2s; flex-shrink: 0;
+}
+.toggleOn { background: var(--primary); }
+.knob {
+  width: 20px; height: 20px; border-radius: 50%; background: var(--surface);
+  position: absolute; top: 3px; left: 3px; transition: left 0.2s;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+}
+.toggleOn .knob { left: 21px; }
+
+.logoutSection { padding: 0 1rem; display: flex; flex-direction: column; gap: 0.65rem; }
+.sosHistoryBtn {
+  width: 100%; padding: 0.85rem;
+  background: var(--primary-soft); border: 1.5px solid var(--border);
+  border-radius: 14px; color: var(--primary);
+  font-family: 'Nunito', sans-serif; font-size: 0.9rem; font-weight: 800;
+  cursor: pointer;
+}
+.refreshRoleBtn {
+  width: 100%; padding: 0.85rem;
+  background: var(--safe-soft); border: 1.5px solid #C8E6C9;
+  border-radius: 14px; color: var(--safe);
+  font-family: 'Nunito', sans-serif; font-size: 0.9rem; font-weight: 800;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.refreshRoleBtn:hover { background: var(--safe-soft); }
+.logoutBtn {
+  width: 100%; padding: 0.85rem;
+  background: var(--surface); border: 1.5px solid #FFCDD2;
+  border-radius: 14px; color: var(--danger);
+  font-family: 'Nunito', sans-serif; font-size: 0.9rem; font-weight: 800;
+  cursor: pointer;
+}

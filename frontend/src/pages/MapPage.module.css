@@ -1,0 +1,182 @@
+/* ── Page ───────────────────────────────────────────────── */
+.page { height: 100%; display: flex; flex-direction: column; overflow: hidden; }
+
+/* ── Mode Toggle ────────────────────────────────────────── */
+.modeToggle {
+  display: flex; gap: 0; flex-shrink: 0;
+  background: var(--surface); border-bottom: 1.5px solid var(--border);
+}
+.modeBtn {
+  flex: 1; padding: 0.65rem 0.5rem;
+  background: none; border: none;
+  font-family: 'Nunito', sans-serif; font-size: 0.78rem; font-weight: 800;
+  color: var(--text-muted); cursor: pointer;
+  border-bottom: 2.5px solid transparent;
+  transition: all 0.2s; white-space: nowrap;
+}
+.modeBtnActive {
+  color: #E53935;
+  border-bottom-color: #E53935;
+  background: rgba(229,57,53,0.04);
+}
+.modeBtnActiveSafe {
+  color: var(--primary);
+  border-bottom-color: var(--primary);
+  background: var(--primary-soft);
+}
+
+/* ── Incident Filter Bar ────────────────────────────────── */
+.filterBar {
+  display: flex; align-items: center; gap: 0.4rem;
+  padding: 0.55rem 1rem; overflow-x: auto; scrollbar-width: none;
+  background: var(--surface); border-bottom: 1px solid var(--border); flex-shrink: 0;
+}
+.filterBar::-webkit-scrollbar { display: none; }
+.chip {
+  padding: 0.28rem 0.85rem; border-radius: 20px;
+  border: 1.5px solid var(--border); background: var(--surface);
+  font-family: 'Nunito', sans-serif; font-size: 0.7rem; font-weight: 700;
+  color: var(--text-muted); cursor: pointer; white-space: nowrap; transition: all 0.15s;
+}
+.chipActive { color: #fff; }
+
+/* ── Safe Places Category Bar ───────────────────────────── */
+.safePlacesBar {
+  display: flex; gap: 0.5rem; padding: 0.65rem 1rem;
+  overflow-x: auto; scrollbar-width: none;
+  background: var(--surface); border-bottom: 1px solid var(--border); flex-shrink: 0;
+}
+.safePlacesBar::-webkit-scrollbar { display: none; }
+.safeChip {
+  display: flex; align-items: center; gap: 0.3rem;
+  padding: 0.4rem 0.85rem; border-radius: 20px;
+  border: 1.5px solid var(--border); background: var(--surface);
+  font-family: 'Nunito', sans-serif; font-size: 0.72rem; font-weight: 700;
+  color: var(--text-muted); cursor: pointer; white-space: nowrap;
+  transition: all 0.2s; flex-shrink: 0;
+}
+.safeChip:active  { transform: scale(0.93); }
+.safeChipActive   { color: #fff; }
+
+/* ── Map ────────────────────────────────────────────────── */
+.mapWrap { flex: 1; position: relative; overflow: hidden; min-height: 0; }
+.noToken {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  background: var(--bg); gap: 0.5rem; text-align: center; padding: 2rem;
+}
+.noToken span  { font-size: 3rem; }
+.noToken p     { font-size: 1rem; font-weight: 700; color: var(--text); }
+.noToken small { font-size: 0.78rem; color: var(--text-muted); }
+
+/* ── Incident pin (teardrop) ────────────────────────────── */
+.pin {
+  width: 32px; height: 32px; border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  display: flex; align-items: center; justify-content: center;
+  border: 2px solid #fff; cursor: pointer; transition: transform 0.15s;
+}
+.pin:hover { transform: rotate(-45deg) scale(1.15); }
+.pinIcon   { transform: rotate(45deg); font-size: 13px; }
+
+/* ── Safe place pin (circle) ────────────────────────────── */
+.safePin {
+  width: 38px; height: 38px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  border: 2.5px solid #fff; cursor: pointer;
+  transition: transform 0.15s;
+  animation: safePinIn 0.3s cubic-bezier(0.34,1.56,0.64,1);
+}
+.safePin:hover { transform: scale(1.15); }
+@keyframes safePinIn {
+  from { transform: scale(0) translateY(8px); opacity: 0; }
+  to   { transform: scale(1) translateY(0);   opacity: 1; }
+}
+.safePinIcon { font-size: 16px; }
+
+/* ── Popup ──────────────────────────────────────────────── */
+.popup :global(.mapboxgl-popup-content) {
+  border-radius: 14px !important; padding: 0 !important;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18) !important; overflow: hidden;
+  min-width: 190px;
+}
+.popup :global(.mapboxgl-popup-close-button) {
+  font-size: 16px; color: #888; padding: 4px 8px;
+}
+.popupContent { padding: 0.9rem; }
+.popupHeader  { display: flex; align-items: flex-start; gap: 0.5rem; margin-bottom: 0.5rem; }
+.popupEmoji   { font-size: 1.3rem; flex-shrink: 0; margin-top: 1px; }
+.popupTitle   { font-size: 0.85rem; font-weight: 800; color: var(--text); display: block; }
+.popupSev, .popupTypeBadge {
+  font-size: 0.6rem; font-weight: 800;
+  padding: 2px 8px; border-radius: 20px; display: inline-block; margin-top: 2px;
+}
+.popupAddr { font-size: 0.72rem; color: var(--text-muted); margin-bottom: 0.25rem; line-height: 1.4; }
+.popupMeta { font-size: 0.7rem; color: var(--text-muted); margin-bottom: 0.2rem; }
+.popupMeta strong { color: var(--safe); }
+.callBtn {
+  display: block; margin: 0.5rem 0 0.25rem;
+  padding: 0.45rem 0.75rem; background: var(--safe-soft);
+  color: var(--safe); border-radius: 8px; font-size: 0.75rem;
+  font-weight: 800; text-decoration: none;
+}
+.directionsBtn {
+  display: block; margin-top: 0.5rem; padding: 0.5rem 1rem;
+  border-radius: 10px; color: #fff; text-decoration: none;
+  font-size: 0.78rem; font-weight: 800; text-align: center;
+  transition: opacity 0.15s;
+}
+.directionsBtn:hover { opacity: 0.88; }
+
+/* ── Safe Places List Panel ─────────────────────────────── */
+.safeList {
+  background: var(--surface); border-top: 1.5px solid var(--border);
+  flex-shrink: 0; max-height: 200px; display: flex; flex-direction: column;
+}
+.safeListTitle {
+  font-size: 0.7rem; font-weight: 900; color: var(--text-muted);
+  text-transform: uppercase; letter-spacing: 0.5px;
+  padding: 0.55rem 1rem 0.3rem; flex-shrink: 0;
+}
+.safeListScroll {
+  overflow-y: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+}
+.safeListScroll::-webkit-scrollbar { display: none; }
+.safeListItem {
+  display: flex; align-items: center; gap: 0.65rem;
+  padding: 0.6rem 1rem; cursor: pointer;
+  border-left: 3px solid transparent;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.15s;
+}
+.safeListItem:active { background: var(--surface-hover); }
+.safeListIcon  { font-size: 1.2rem; flex-shrink: 0; }
+.safeListInfo  { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 1px; }
+.safeListInfo strong { font-size: 0.78rem; font-weight: 800; color: var(--text); display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.safeListInfo span   { font-size: 0.65rem; color: var(--text-muted); display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.safeListPhone { color: var(--safe) !important; }
+.safeListDist  { font-size: 0.65rem; font-weight: 800; color: var(--primary); flex-shrink: 0; }
+
+/* ── Legend ─────────────────────────────────────────────── */
+.legend {
+  background: var(--surface); padding: 0.55rem 1rem;
+  display: flex; gap: 1rem; border-top: 1px solid var(--border);
+  flex-shrink: 0; flex-wrap: wrap;
+}
+.legendItem {
+  display: flex; align-items: center; gap: 5px;
+  font-size: 0.66rem; color: var(--text-muted); font-weight: 700;
+}
+.legendDot { width: 9px; height: 9px; border-radius: 50%; }
+
+/* ── FAB ────────────────────────────────────────────────── */
+.fab {
+  position: absolute; bottom: 1rem; right: 1rem;
+  background: linear-gradient(135deg, var(--primary), #880E4F);
+  color: #fff; border: none; border-radius: 24px;
+  padding: 0.75rem 1.25rem;
+  font-family: 'Nunito', sans-serif; font-size: 0.88rem; font-weight: 800;
+  box-shadow: 0 4px 20px rgba(194,24,91,0.45); cursor: pointer;
+  z-index: 10; transition: transform 0.15s, box-shadow 0.15s;
+}
+.fab:active { transform: scale(0.95); box-shadow: none; }

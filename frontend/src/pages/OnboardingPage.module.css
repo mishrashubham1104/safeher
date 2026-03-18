@@ -1,0 +1,267 @@
+/* ── Page ─────────────────────────────────────────────────── */
+.page {
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 3rem 1.5rem 2rem;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.6s ease;
+}
+
+/* ── Skip ─────────────────────────────────────────────────── */
+.skipBtn {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  background: rgba(255,255,255,0.2);
+  border: 1.5px solid rgba(255,255,255,0.4);
+  color: #fff;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: background 0.2s;
+  z-index: 10;
+}
+.skipBtn:hover { background: rgba(255,255,255,0.3); }
+
+/* ── Content ──────────────────────────────────────────────── */
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  max-width: 380px;
+}
+
+/* ── Animations ───────────────────────────────────────────── */
+.enter {
+  animation: enterAnim 0.4s ease forwards;
+}
+.exitLeft {
+  animation: exitLeftAnim 0.35s ease forwards;
+}
+.exitRight {
+  animation: exitRightAnim 0.35s ease forwards;
+}
+
+@keyframes enterAnim {
+  from { opacity: 0; transform: translateX(40px) scale(0.96); }
+  to   { opacity: 1; transform: translateX(0)   scale(1); }
+}
+@keyframes exitLeftAnim {
+  from { opacity: 1; transform: translateX(0); }
+  to   { opacity: 0; transform: translateX(-40px); }
+}
+@keyframes exitRightAnim {
+  from { opacity: 1; transform: translateX(0); }
+  to   { opacity: 0; transform: translateX(40px); }
+}
+
+/* ── Emoji Illustration ───────────────────────────────────── */
+.emojiWrap {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.emojiRing1,
+.emojiRing2,
+.emojiRing3 {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.08);
+  animation: pulseRing 3s ease-in-out infinite;
+}
+.emojiRing1 { width: 160px; height: 160px; animation-delay: 0s; }
+.emojiRing2 { width: 120px; height: 120px; animation-delay: 0.3s; background: rgba(255,255,255,0.12); }
+.emojiRing3 { width: 80px;  height: 80px;  animation-delay: 0.6s; background: rgba(255,255,255,0.18); }
+
+@keyframes pulseRing {
+  0%,100% { transform: scale(1);    opacity: 1; }
+  50%      { transform: scale(1.08); opacity: 0.7; }
+}
+
+.emoji {
+  font-size: 3.5rem;
+  position: relative;
+  z-index: 2;
+  animation: floatEmoji 3s ease-in-out infinite;
+  filter: drop-shadow(0 8px 24px rgba(0,0,0,0.2));
+}
+@keyframes floatEmoji {
+  0%,100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+
+/* ── Slide Number ─────────────────────────────────────────── */
+.slideNum {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+/* ── Title ────────────────────────────────────────────────── */
+.title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(2rem, 7vw, 2.6rem);
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.15;
+  margin-bottom: 1rem;
+  letter-spacing: -0.5px;
+  text-shadow: 0 2px 16px rgba(0,0,0,0.15);
+}
+
+/* ── Subtitle ─────────────────────────────────────────────── */
+.sub {
+  font-size: 0.92rem;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.65;
+  margin-bottom: 1.75rem;
+  max-width: 320px;
+}
+
+/* ── Feature Pills ────────────────────────────────────────── */
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.featurePill {
+  background: rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.4rem 0.85rem;
+  border-radius: 20px;
+  backdrop-filter: blur(8px);
+  animation: pillIn 0.4s ease forwards;
+  opacity: 0;
+}
+@keyframes pillIn {
+  from { opacity: 0; transform: translateY(10px) scale(0.9); }
+  to   { opacity: 1; transform: translateY(0)    scale(1); }
+}
+
+/* ── Bottom ───────────────────────────────────────────────── */
+.bottom {
+  width: 100%;
+  max-width: 380px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+/* ── Dots ─────────────────────────────────────────────────── */
+.dots {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+  background: rgba(255,255,255,0.35);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+.dotActive {
+  width: 28px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+/* ── Nav Buttons ──────────────────────────────────────────── */
+.navBtns {
+  display: flex;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.prevBtn {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  border: 1.5px solid rgba(255,255,255,0.4);
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, transform 0.15s;
+  flex-shrink: 0;
+}
+.prevBtn:active { transform: scale(0.92); }
+.prevBtn:hover  { background: rgba(255,255,255,0.3); }
+
+.nextBtn {
+  flex: 1;
+  padding: 1rem;
+  background: #fff;
+  border: none;
+  border-radius: 16px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+  color: #C2185B;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  letter-spacing: 0.2px;
+}
+.nextBtn:active { transform: scale(0.97); }
+.nextBtn:hover  { box-shadow: 0 6px 28px rgba(0,0,0,0.3); }
+
+.nextBtnFinal {
+  background: #fff;
+  color: #2E7D32;
+  font-size: 1rem;
+}
+
+/* ── Login Hint ───────────────────────────────────────────── */
+.loginHint {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.75);
+  text-align: center;
+}
+
+.loginLink {
+  background: none;
+  border: none;
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.82rem;
+  font-family: 'Nunito', sans-serif;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+}

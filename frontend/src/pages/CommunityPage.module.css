@@ -1,0 +1,208 @@
+.page {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.onlineBar {
+  background: #E8F5E9;
+  padding: 0.45rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--safe);
+  flex-shrink: 0;
+}
+.onlineDot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--safe);
+  animation: blink 1.5s infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+.notice {
+  background: var(--bg);
+  border-bottom: 1px solid #FFE082;
+  padding: 0.6rem 1rem;
+  font-size: 0.74rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  line-height: 1.4;
+  flex-shrink: 0;
+}
+
+.messages {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.emptyChat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--text-muted);
+  padding: 2rem;
+}
+.emptyChat span { font-size: 2.5rem; display: block; margin-bottom: 0.75rem; }
+.emptyChat p    { font-size: 0.85rem; font-weight: 700; }
+
+.msgRow {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+.msgRowOwn { flex-direction: row-reverse; }
+
+.msgAvatar {
+  width: 30px; height: 30px; border-radius: 50%;
+  background: var(--primary-light);
+  color: var(--primary);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.75rem; font-weight: 800;
+  flex-shrink: 0;
+}
+
+.bubble {
+  max-width: 75%;
+  background: var(--surface);
+  border-radius: 16px 16px 16px 4px;
+  padding: 0.65rem 0.85rem;
+  border: 1.5px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+.bubbleOwn {
+  background: linear-gradient(135deg, #C2185B, #FF4081);
+  border-color: transparent;
+  border-radius: 16px 16px 4px 16px;
+  box-shadow: 0 2px 8px rgba(194,24,91,0.25);
+}
+
+.senderName {
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: var(--primary);
+  display: block;
+  margin-bottom: 2px;
+}
+
+.msgText {
+  font-size: 0.85rem;
+  color: var(--text);
+  line-height: 1.4;
+  word-break: break-word;
+}
+.bubbleOwn .msgText { color: #fff; }
+
+.msgTime {
+  font-size: 0.6rem;
+  color: #bbb;
+  display: block;
+  text-align: right;
+  margin-top: 3px;
+}
+.bubbleOwn .msgTime { color: rgba(255,255,255,0.7); }
+
+/* Typing indicator */
+.typingIndicator {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+.typingDots {
+  display: flex;
+  gap: 3px;
+  align-items: center;
+}
+.typingDots div {
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--text-muted);
+  animation: bounce 1s infinite;
+}
+.typingDots div:nth-child(2) { animation-delay: 0.2s; }
+.typingDots div:nth-child(3) { animation-delay: 0.4s; }
+@keyframes bounce {
+  0%,100% { transform: translateY(0); }
+  50%      { transform: translateY(-4px); }
+}
+
+/* Input area */
+.inputArea {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  padding: 0.5rem 1rem 0.75rem;
+  flex-shrink: 0;
+}
+
+.anonRow {
+  margin-bottom: 0.4rem;
+}
+.anonLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.miniToggle {
+  width: 32px; height: 18px; border-radius: 9px;
+  background: #ddd; position: relative;
+  transition: background 0.2s; flex-shrink: 0;
+}
+.miniToggleOn { background: var(--primary); }
+.miniKnob {
+  width: 14px; height: 14px; border-radius: 50%;
+  background: var(--surface); position: absolute;
+  top: 2px; left: 2px;
+  transition: left 0.2s;
+}
+.miniToggleOn .miniKnob { left: 16px; }
+
+.inputRow {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.chatInput {
+  flex: 1;
+  padding: 0.7rem 1rem;
+  border: 1.5px solid var(--border);
+  border-radius: 24px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.9rem;
+  color: var(--text);
+  background: var(--surface-2);
+  outline: none;
+  transition: border 0.2s;
+}
+.chatInput:focus { border-color: var(--primary); }
+
+.sendBtn {
+  width: 42px; height: 42px; border-radius: 50%;
+  background: var(--primary);
+  color: #fff; border: none;
+  font-size: 1rem; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: transform 0.1s;
+  flex-shrink: 0;
+}
+.sendBtn:active { transform: scale(0.92); }
+.sendBtn:disabled { opacity: 0.4; cursor: not-allowed; }
